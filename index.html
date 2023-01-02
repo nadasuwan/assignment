@@ -42,8 +42,7 @@ function initAutocomplete() {
 
   let markers = [];
 
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
+  
   searchBox.addListener("places_changed", () => {
     const places = searchBox.getPlaces();
 
@@ -51,13 +50,13 @@ function initAutocomplete() {
       return;
     }
 
-    // Clear out the old markers.
+    
     markers.forEach((marker) => {
       marker.setMap(null);
     });
     markers = [];
 
-    // For each place, get the icon, name and location.
+    
     const bounds = new google.maps.LatLngBounds();
 
     places.forEach((place) => {
@@ -74,7 +73,7 @@ function initAutocomplete() {
         scaledSize: new google.maps.Size(25, 25),
       };
 
-      // Create a marker for each place.
+      
       markers.push(
         new google.maps.Marker({
           map,
@@ -84,7 +83,7 @@ function initAutocomplete() {
         })
       );
       if (place.geometry.viewport) {
-        // Only geocodes have viewport.
+        
         bounds.union(place.geometry.viewport);
       } else {
         bounds.extend(place.geometry.location);
